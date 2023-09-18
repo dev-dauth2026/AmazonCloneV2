@@ -18,7 +18,7 @@
                 </div>
                 <h3 class="mb-[10px] text-black">Category: {{product.category.name}}</h3>
 
-                <small class="mb-[5px]">{{product.description|truncatechars:40}} </small>
+                {% comment %} <small class="mb-[5px]">{{product.description|truncatechars:40}} </small>
                 <select class="mb-[10px]">
                     <option value ="small">SM</option>
                     <option value ="medium">M</option>
@@ -26,8 +26,8 @@
                     <option value ="extralarge">XL</option>
 
 
-                </select>
-                <p class="mb-[10px]">Total Quantity in Stock: {{product.quantity}}</p>
+                </select> {% endcomment %}
+                {% comment %} <p class="mb-[10px]">Total Quantity in Stock: {{product.quantity}}</p> {% endcomment %}
                 <button class="p-2 w-full bg-red-400 rounded text-white">Add to Cart </button>
 
             </div>
