@@ -1,5 +1,6 @@
 
 {% load static %}
+
 <nav class="mainNavbar flex justify-between bg-[#17212d] text-white py-[5px] px-[20px] h-[60px] items-center ">
     <div class="relative border border-transparent hover:border-white flex items-center h-full mr-[20px] px-[10px]">
     <h2 class=" text-[30px] ">amazon<span class="text-[12px]">.com.au<span></h2>
@@ -14,14 +15,10 @@
          </div>
     <div class="searchForm  h-[40px] flex flex-1 justify-center items-center border  mr-[20px] rounded overflow-hidden">
         <select class="text-black  h-full border rounded-r-0 rounded-l-[5px]">
-            <option>All</option>
-            <option>All Accessories</option>
-            <option>Computer</option>
-            <option>Men</option>
-            <option>Women</option>
-            <option>Kids</option>
-            <option>Clothes</option>
-
+            {% for category_product in category_products %}
+            <option>{{category_product.category.name}}</option>
+           
+            {% endfor %}
 
         </select>
         <input type="input" placeholder="Search..." class="p-[5px] h-full flex-1" />
