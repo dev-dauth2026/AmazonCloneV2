@@ -1,0 +1,15 @@
+{% extends "base.html" %} 
+
+
+{% block title %} Amazon {% endblock %} 
+{% block content %}
+{% include 'navbar/navbar.html' %}
+{% include 'navbar/menuNavbar.html' %}
+
+<main class="p-[10px]">
+{% include 'products/productList.html' %}
+
+</main>
+
+
+{% endblock %}

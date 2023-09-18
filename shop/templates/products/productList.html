@@ -1,0 +1,46 @@
+
+{% for category_product in category_products %}
+<section class="p-[10px] flex flex-col  gap-[20px] justify-around">
+    {% comment %} {% if product.category.name == "Men" %} {% endcomment %}
+    <h1 class="text-[30px]">{{category_product.category.name}}</h1>
+    <hr>
+    <div class="p-[10px] flex flex-wrap  gap-[20px] justify-around">
+    {% for product in category_product.products%}
+
+        <div class="min-h-[300px] max-w-[400px] flex flex-col bg-white rounded shadow shadow-slate-600 p-[10px]">
+            
+            <img class="mb-[10px] object-cover mx-auto max-h-[200px]"  src="{{ product.main_image.url }}" alt="{{ product.name }}" >
+            <div class="p-5 flex flex-col justify-between flex-1 ">
+                <div class="flex flex-row justify-between ">
+            
+                    <h1 class="mb-[10px] font-bold">{{product.name|truncatewords:5}}</h1>
+                    <p>${{product.price}}</p>
+                </div>
+                <h3 class="mb-[10px] text-black">Category: {{product.category.name}}</h3>
+
+                <small class="mb-[5px]">{{product.description|truncatechars:40}} </small>
+                <select class="mb-[10px]">
+                    <option value ="small">SM</option>
+                    <option value ="medium">M</option>
+                    <option value ="large">L</option>
+                    <option value ="extralarge">XL</option>
+
+
+                </select>
+                <p class="mb-[10px]">Total Quantity in Stock: {{product.quantity}}</p>
+                <button class="p-2 w-full bg-red-400 rounded text-white">Add to Cart </button>
+
+            </div>
+        </div> 
+        
+        {% endfor %}
+    </div>
+</section>
+    {% comment %} {% endif %} {% endcomment %}
+    {% endfor %}
+   
+  
+   
+    
+
+

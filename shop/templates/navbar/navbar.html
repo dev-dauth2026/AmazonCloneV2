@@ -1,0 +1,51 @@
+
+{% load static %}
+<nav class="mainNavbar flex justify-between bg-[#17212d] text-white py-[5px] px-[20px] h-[60px] items-center ">
+    <div class="relative border border-transparent hover:border-white flex items-center h-full mr-[20px] px-[10px]">
+    <h2 class=" text-[30px] ">amazon<span class="text-[12px]">.com.au<span></h2>
+        <img class="absolute top-8 w-[70px]" src="{% static 'images/amazonLogo.png' %}" alt="logo">
+    </div>
+    <div class="flex flex-row gap-[10px] px-[10px] justify-center items-center mx-[20px] border border-transparent hover:border-white h-full">
+        <i class="fa-solid fa-location-dot"></i>
+        <div class ="flex flex-col">
+        <small class="text-[12px] text-gray-400">Deliver to Brisbane 4000 QLD</small>
+        <p>To change, sign in or enter postcode</p>
+        </div>
+         </div>
+    <div class="searchForm  h-[40px] flex flex-1 justify-center items-center border  mr-[20px] rounded overflow-hidden">
+        <select class="text-black  h-full border rounded-r-0 rounded-l-[5px]">
+            <option>All</option>
+            <option>All Accessories</option>
+            <option>Computer</option>
+            <option>Men</option>
+            <option>Women</option>
+            <option>Kids</option>
+            <option>Clothes</option>
+
+
+        </select>
+        <input type="input" placeholder="Search..." class="p-[5px] h-full flex-1" />
+        <button class="py-[5px] h-full px-[10px] bg-yellow-200 text-black"> <i class="fa-solid fa-magnifying-glass"></i></button>
+    </div>
+
+    <div class="flex flex-col justify-center items-center  border border-transparent hover:border-white h-full px-[10px] ">
+        <p>EN</p>
+
+    </div>
+    <div class="flex flex-col justify-center items-center  px-[10px]  border border-transparent hover:border-white h-full">
+        <small class="text-[12px] text-gray-400">Hello, sign in</small>
+        <p>Accounts & Lists</p>
+     </div>
+     <div class="flex flex-col justify-center items-center  px-[10px]  border border-transparent hover:border-white h-full">
+        <small class="text-[12px] text-gray-400">Returns</small>
+        <p>& Orders</p>
+     </div>
+     <div class="flex flex-col justify-center items-center   border border-transparent hover:border-white h-full px-[10px]">
+
+        <p><i class="fa-solid fa-cart-shopping fa-2x"></i></p>
+    </div>
+
+</nav>
+
+
+
