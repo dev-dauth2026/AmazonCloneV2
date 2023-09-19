@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.template.defaultfilters import slugify
 
+
 # Create your models here.
 class User(AbstractUser):
     pass
@@ -108,26 +109,26 @@ class ComputerAndPhone(Electronics):
 class Accessories(Electronics):
     pass
   
+class ClotheSize(models.Model):
+    name = models.CharField(max_length=50, unique=True)
 
+    def __str__(self):
+        return self.name
 class Clothe(Product):
     brand = models.ForeignKey(ClotheBrand, on_delete=models.CASCADE, null=True, blank=True)
     material = models.CharField(max_length=100)
     style = models.CharField(max_length=100)
     season = models.CharField(max_length=50)
-    size_choices = (
-        ('xs', 'Extra Small'),
-        ('s', 'Small'),
-        ('m', 'Medium'),
-        ('l', 'Large'),
-        ('xl', 'Extra Large'),
-    )
-    size = models.CharField(max_length=10, choices=size_choices,default='xs')
+    
+    sizes = models.ManyToManyField(ClotheSize,blank=True)
     gender_choices = (
         ('men', 'Men'),
         ('women', 'Women'),
         ('kids', 'Kids'),
     )
     gender = models.CharField(max_length=10, choices=gender_choices, default='men')
+
+   
 
 
 class HomeLiving(Product):
