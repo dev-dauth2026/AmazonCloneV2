@@ -1,0 +1,96 @@
+{% extends "base.html" %} 
+
+
+{% block title %} Amazon {% endblock %} 
+{% block content %}
+{% include '../navbar/navbar.html' %}
+{% include '../navbar/menuNavbar.html' %}
+<main class="p-[10px]">
+
+    
+<section class="p-[10px] flex flex-col  gap-[20px] justify-around">
+    {% comment %} {% if product.category.name == "Men" %} {% endcomment %}
+    <h1 class="text-[30px]">{{product.name}}</h1>
+    <hr>
+    <div class="p-[10px] flex flex-wrap  gap-[20px] justify-around ">
+        <div class="  items-center flex  justify-center">
+            <div class="flex flex-col w-[50px] h-full gap-[10px] justify-center">
+                {% for image in product.additional_images.all %}
+                <img src="{{ image.image.url }}" class=" h-[50px] w-full " alt="{{ product.name }}"/>
+
+                {% endfor %}
+                
+            </div>
+            <img class="mb-[10px] object-cover mx-auto flex-1 "  src="{{ product.main_image.url }}" alt="{{ product.name }}" >
+        </div>
+        <div class="min-h-[300px] w-[40%] flex flex-col bg-white rounded shadow shadow-slate-600 p-[10px]">    
+            <div class="p-5 flex flex-col justify-between flex-1 ">      
+                    <h1 class="mb-[10px] font-bold text-[25px]">{{product.name}}</h1>
+                    <p class="font-bold text-[30px]">${{product.price}}</p>
+           
+                <h3 class="mb-[10px] text-black">Category: {{product.category.name}}</h3>
+
+                 <small class=" mb-[20px]">{{product.description}} </small> 
+                <div class="flex justify-between mb-[10px]">
+             
+                 {% if product.category.name == "Electronics" %}
+                     <p>Size: {{ product.electronics.size }}</p>
+                     <p>Brand: {{ product.electronics.brand.name }}</p>
+                     <!-- Add other fields specific to Electronics -->
+                 {% elif product.category.name == "Clothes" %}
+                 <p>Size: </p>
+                 <select class="w-[50%]">
+                     {% for size in product.clothe.sizes.all %}
+                            <option value="{{size}}">{{size.name}}</option>
+
+                            
+                            {% endfor %}
+                        </select>
+                     <!-- Add other fields specific to Clothes -->
+                 {% elif product.category.name == "HomeLiving" %}
+                     <p>Room Type: {{ product.homeliving.room_type }}</p>
+                     <p>Brand: {{ product.homeliving.brand.name }}</p>
+                     <!-- Add other fields specific to HomeLiving -->
+                 {% elif product.category.name == "BeautyPersonalCare" %}
+                     <p>Skin Type: {{ product.beautypersonalcare.skin_type }}</p>
+                     <p>Brand: {{ product.beautypersonalcare.brand.name }}</p>
+                     <!-- Add other fields specific to BeautyPersonalCare -->
+                 {% elif product.category.name == "SportsOutdoors" %}
+                     <p>Sport Type: {{ product.sportsoutdoors.sport_type }}</p>
+                     <p>Brand: {{ product.sportsoutdoors.brand.name }}</p>
+                     <!-- Add other fields specific to SportsOutdoors -->
+                 {% elif product.category.name == "ToysGames" %}
+                     <p>Age Group: {{ product.toysgames.age_group }}</p>
+                     <p>Skill Level: {{ product.toysgames.skill_level }}</p>
+                     <p>Brand: {{ product.toysgames.brand.name }}</p>
+                     <!-- Add other fields specific to ToysGames -->
+                 {% endif %}
+                    </div>
+                    <p>Brand: {{ product.clothe.brand.name }}</p>
+
+                 <hr>
+   
+             
+                <p class="mb-[10px]">Total Quantity in Stock: {{product.quantity}}</p> 
+                <button class="p-2 w-full bg-red-400 rounded text-white">Add to Cart </button>
+
+            </div>
+        </div> 
+
+        
+      
+    </div>
+</section>
+    {% comment %} {% endif %} {% endcomment %}
+
+        </main>
+ {% include 'footer/footer.html' %}
+        
+        
+ {% endblock %}
+   
+  
+   
+    
+
+
