@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import User, Category, Colour,ProductImage,Product,Accessories,ComputerAndPhone,Clothe,HomeLiving,BeautyPersonalCare,SportsOutdoors,ElectronicsBrand,ClotheBrand,HomeLivingBrand,BeautyPersonalCareBrand,SportsOutdoorsBrand
+from .models import User, Category, Colour,ProductImage,Product,Accessories,ComputerAndPhone,Clothe,HomeLiving,BeautyPersonalCare,SportsOutdoors,ElectronicsBrand,ClotheBrand,HomeLivingBrand,BeautyPersonalCareBrand,SportsOutdoorsBrand,ClotheSize
 
 # Register your models here.
 
@@ -77,6 +77,11 @@ class ComputerAndPhoneAdmin(admin.ModelAdmin):
  
 admin.site.register(ComputerAndPhone,ComputerAndPhoneAdmin)
 
+
+class ClotheSizeAdmin(admin.ModelAdmin):
+    list_display = ("name",)
+ 
+admin.site.register(ClotheSize,ClotheSizeAdmin)
 # Clothe Model 
 class ClotheAdmin(admin.ModelAdmin):
     list_display = ("name", "description")
