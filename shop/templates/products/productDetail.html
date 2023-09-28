@@ -30,50 +30,49 @@
            
                 <h3 class="mb-[10px] text-black">Category: {{product.category.name}}</h3>
 
-                 <small class=" mb-[20px]">{{product.description}} </small> 
-                <div class="flex justify-between mb-[10px]">
-             
-                 {% if product.category.name == "Electronics" %}
-                     <p>Size: {{ product.electronics.size }}</p>
-                     <p>Brand: {{ product.electronics.brand.name }}</p>
-                     <!-- Add other fields specific to Electronics -->
-                 {% elif product.category.name == "Clothes" %}
-                 <p>Size: </p>
-                 <select class="w-[50%]">
-                     {% for size in product.clothe.sizes.all %}
-                            <option value="{{size}}">{{size.name}}</option>
+                 <small class="mb-[5px] mb-[20px]">{{product.description}} </small> 
+                <form method="POST" action ="{% url 'addToCart' product.id %}">
+                    <div class="flex justify-between mb-[20px]">
+                    {% if product.category.name == "Electronics" %}
+                        <p>Size: {{ product.electronics.size }}</p>
+                        <p>Brand: {{ product.electronics.brand.name }}</p>
+                        <!-- Add other fields specific to Electronics -->
+                    {% elif product.category.name == "Clothes" %}
+                    <p>Size: </p>
+                    <select class="w-[50%]" name="selectedSize">
+                        {% for size in product.clothe.sizes.all %}
+                                <option value="{{size.name}}">{{size.name}}</option>             
+                                {% endfor %}
+                            </select>
+                        <!-- Add other fields specific to Clothes -->
+                    {% elif product.category.name == "HomeLiving" %}
+                        <p>Room Type: {{ product.homeliving.room_type }}</p>
+                        <p>Brand: {{ product.homeliving.brand.name }}</p>
+                        <!-- Add other fields specific to HomeLiving -->
+                    {% elif product.category.name == "BeautyPersonalCare" %}
+                        <p>Skin Type: {{ product.beautypersonalcare.skin_type }}</p>
+                        <p>Brand: {{ product.beautypersonalcare.brand.name }}</p>
+                        <!-- Add other fields specific to BeautyPersonalCare -->
+                    {% elif product.category.name == "SportsOutdoors" %}
+                        <p>Sport Type: {{ product.sportsoutdoors.sport_type }}</p>
+                        <p>Brand: {{ product.sportsoutdoors.brand.name }}</p>
+                        <!-- Add other fields specific to SportsOutdoors -->
+                    {% elif product.category.name == "ToysGames" %}
+                        <p>Age Group: {{ product.toysgames.age_group }}</p>
+                        <p>Skill Level: {{ product.toysgames.skill_level }}</p>
+                        <p>Brand: {{ product.toysgames.brand.name }}</p>
+                        <!-- Add other fields specific to ToysGames -->
+                    {% endif %}
 
-                            
-                            {% endfor %}
-                        </select>
-                     <!-- Add other fields specific to Clothes -->
-                 {% elif product.category.name == "HomeLiving" %}
-                     <p>Room Type: {{ product.homeliving.room_type }}</p>
-                     <p>Brand: {{ product.homeliving.brand.name }}</p>
-                     <!-- Add other fields specific to HomeLiving -->
-                 {% elif product.category.name == "BeautyPersonalCare" %}
-                     <p>Skin Type: {{ product.beautypersonalcare.skin_type }}</p>
-                     <p>Brand: {{ product.beautypersonalcare.brand.name }}</p>
-                     <!-- Add other fields specific to BeautyPersonalCare -->
-                 {% elif product.category.name == "SportsOutdoors" %}
-                     <p>Sport Type: {{ product.sportsoutdoors.sport_type }}</p>
-                     <p>Brand: {{ product.sportsoutdoors.brand.name }}</p>
-                     <!-- Add other fields specific to SportsOutdoors -->
-                 {% elif product.category.name == "ToysGames" %}
-                     <p>Age Group: {{ product.toysgames.age_group }}</p>
-                     <p>Skill Level: {{ product.toysgames.skill_level }}</p>
-                     <p>Brand: {{ product.toysgames.brand.name }}</p>
-                     <!-- Add other fields specific to ToysGames -->
-                 {% endif %}
-                    </div>
-                    <p>Brand: {{ product.clothe.brand.name }}</p>
+                        </div>
 
-                 <hr>
-   
-             
-                <p class="mb-[10px]">Total Quantity in Stock: {{product.quantity}}</p> 
-                <button class="p-2 w-full bg-red-400 rounded text-white">Add to Cart </button>
 
+                    <hr>
+    
+                
+                    <p class="mb-[10px]">Total Quantity in Stock: {{product.quantity}}</p> 
+                    <button type="submit" class="p-2 w-full bg-red-400 rounded text-white">Add to Cart </button>
+                </form>
             </div>
         </div> 
 
