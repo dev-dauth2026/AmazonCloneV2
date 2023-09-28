@@ -1,11 +1,11 @@
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render,get_object_or_404,redirect
 from django.http import HttpResponse    
 from django.template import loader
-from .models import Product,Category
+from .models import Product,Category,Clothe
 
 
 # Create your views here.
-def shop(request):
+def home(request):
     categories =Category.objects.all()
     category_products=[]
     for category in categories:
@@ -21,3 +21,28 @@ def productDetail(request,slug):
     template=loader.get_template("products/productDetail.html")
 
     return HttpResponse(template.render({'product':product},request))
+
+
+# def addToCart(request,productId):
+#     product = get_object_or_404(Product, id=productId)
+#     # cart, created = Cart.objects.get_or_create(user=user)
+
+#     if request.method=="POST":
+#         selectedSize = None
+
+#         if isinstance(product,Clothe):
+#             selectedSize = request.POST.get('selectedSize')
+        
+#         cart =request.session.get('cart',{})
+#         if productId in cart:
+#             cart[productId]['quantity']+=1
+        
+#         else:
+#             cart[productId]={'selectedSize':selectedSize,'quantity':1}
+
+#         request.session['cart']= cart
+    
+
+#     return redirect('/')
+    
+
