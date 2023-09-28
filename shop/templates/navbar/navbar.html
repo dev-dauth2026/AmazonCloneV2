@@ -1,11 +1,14 @@
 
 {% load static %}
 
-<nav class="mainNavbar flex justify-between bg-[#17212d] text-white py-[5px] px-[20px] h-[60px] items-center ">
+<nav class="mainNavbar  flex justify-between bg-[#17212d] text-white py-[5px] px-[20px] h-[60px] items-center ">
+    <a href="/">
     <div class="relative border border-transparent hover:border-white flex items-center h-full mr-[20px] px-[10px]">
+
     <h2 class=" text-[30px] ">amazon<span class="text-[12px]">.com.au<span></h2>
         <img class="absolute top-8 w-[70px]" src="{% static 'images/amazonLogo.png' %}" alt="logo">
     </div>
+</a>
     <div class="flex flex-row gap-[10px] px-[10px] justify-center items-center mx-[20px] border border-transparent hover:border-white h-full">
         <i class="fa-solid fa-location-dot"></i>
         <div class ="flex flex-col">
@@ -29,10 +32,7 @@
         <p>EN</p>
 
     </div>
-    <div class="flex flex-col justify-center items-center  px-[10px]  border border-transparent hover:border-white h-full">
-        <small class="text-[12px] text-gray-400">Hello, sign in</small>
-        <p>Accounts & Lists</p>
-     </div>
+    {% include 'navbar/loginButton.html' %}
      <div class="flex flex-col justify-center items-center  px-[10px]  border border-transparent hover:border-white h-full">
         <small class="text-[12px] text-gray-400">Returns</small>
         <p>& Orders</p>
@@ -41,6 +41,13 @@
 
         <p><i class="fa-solid fa-cart-shopping fa-2x"></i></p>
     </div>
+    {% if user.is_authenticated %}
+    <div class="User relative flex flex-col justify-center items-center   border border-transparent hover:border-white h-full px-[10px]">
+
+        <p><i class="fa-solid fa-user-circle fa-2x"></i></p>
+        <p class="text-[12px] bottom-[50px] hover:User">{{user.username}}</p>
+    </div>
+    {% endif %}
 
 </nav>
 
