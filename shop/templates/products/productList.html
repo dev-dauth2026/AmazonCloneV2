@@ -11,7 +11,7 @@
             
             <img class="mb-[10px] object-cover mx-auto max-h-[200px]"  src="{{ product.main_image.url }}" alt="{{ product.name }}" >
             <div class="p-5 flex flex-col justify-between flex-1 ">
-                <a  href="{% url 'productDetail' product.slug %}">
+                <a  href="{% url 'shop:productDetail' product.slug %}">
                 <div class="flex flex-row justify-between ">
             
                     <h1 class="mb-[10px] font-bold">{{product.name|truncatewords:5}}</h1>
