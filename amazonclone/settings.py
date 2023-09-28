@@ -30,6 +30,7 @@ ALLOWED_HOSTS = ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
 
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -39,7 +40,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'shop'
+    'shop',
+    'accounts',
+
+
+
 ]
 
 MIDDLEWARE = [
@@ -57,7 +62,7 @@ ROOT_URLCONF = 'amazonclone.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -134,9 +139,7 @@ STATICFILES_DIRS = [
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-AUTH_USER_MODEL = 'shop.User'
-
-
+# AUTH_USER_MODEL = 'accounts.CostumerUser'
 
 NPM_BIN_PATH="/usr/local/bin/npm"
 
