@@ -1,13 +1,9 @@
 from django.contrib import admin
-from .models import User, Category, Colour,ProductImage,Product,Accessories,ComputerAndPhone,Clothe,HomeLiving,BeautyPersonalCare,SportsOutdoors,ElectronicsBrand,ClotheBrand,HomeLivingBrand,BeautyPersonalCareBrand,SportsOutdoorsBrand,ClotheSize
+from .models import  Category, Colour,ProductImage,Product,Accessories,ComputerAndPhone,Clothe,HomeLiving,BeautyPersonalCare,SportsOutdoors,ElectronicsBrand,ClotheBrand,HomeLivingBrand,BeautyPersonalCareBrand,SportsOutdoorsBrand,ClotheSize
 
 # Register your models here.
 
-# User Model 
-class UserAdmin(admin.ModelAdmin):
-  list_display = ("first_name", "last_name")
 
-admin.site.register(User,UserAdmin)
 
 # Product Model 
 class ProductAdmin(admin.ModelAdmin):
