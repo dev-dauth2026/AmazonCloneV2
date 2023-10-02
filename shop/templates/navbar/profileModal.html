@@ -1,0 +1,25 @@
+<!-- Modal Container -->
+<div id="myModal" class=" fixed bg-white  shadow-2xl flex flex-col py-[10px]   z-50   s rounded  top-[70px] right-0   w-[300px] transition ease-in duration-800 group-hover:translate-x-0 translate-x-full ">
+    <!-- Modal content -->
+    <i class="fa-solid fa-user-circle fa-3x text-black text-center"></i>
+    {% if user.is_authenticated %}
+    <p class="text-black text-[20px] font-bold text-center">{{user.username}}</p>
+    {% endif %}
+    <hr class="my-[10px]">
+    <ul class="w-full flex flex-col text-black">
+        <li class="py-[10px] px-[20px] hover:bg-blue-300 hover:text-white">My Account</li>
+        <li class="py-[10px] px-[20px] hover:bg-blue-300 hover:text-white">Purchases</li>
+        <li class="py-[10px] px-[20px] hover:bg-blue-300 hover:text-white">Saved</li>
+        <li class="py-[10px] px-[20px] hover:bg-blue-300 hover:text-white">History </li>
+        <li class="py-[10px] px-[20px] hover:bg-blue-300 hover:text-white">Orders </li>
+        <li class="py-[10px] px-[20px] hover:bg-blue-300 hover:text-white">WatchLists </li>
+        <li class="py-[10px] px-[20px] hover:bg-blue-300 hover:text-white">Messages </li>
+        <li class="py-[10px] px-[20px] hover:bg-blue-300 hover:text-white">Notification </li>
+        <li class="py-[10px] px-[20px] hover:bg-blue-300 hover:text-white">Payments </li>
+        <li class="py-[10px] px-[20px] hover:bg-blue-300 hover:text-white">Help </li>
+        <li class="py-[10px] px-[20px] hover:bg-blue-300 hover:text-white">Settings </li>
+        <li class="py-[10px] px-[20px] hover:bg-blue-300 hover:text-white"><a href="{% url 'accounts:logout' %}">Logout  </a></li>
+
+    <ul>
+
+</div>
