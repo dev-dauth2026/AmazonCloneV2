@@ -1,15 +1,17 @@
 {% extends 'base.html' %}
 
 {% block content %}
+{% include 'navbar/navbar.html' %}
+{% include 'navbar/menuNavbar.html' %}
 <div class="flex justify-center items-center w-full  ">
   <div class ="flex flex-col w-[500px]  shadow-2xl p-[30px] m-[30px] rounded ">
   <h2 class="text-[30px] mb-[20px] text-center">Sign Up</h2>
-  <form method="POST" class="" action="{% url 'signup' %}">
+  <form method="POST" class="" action="{% url 'accounts:signup' %}">
     {% csrf_token %}
   
     {% for field in form %}
     {% if field.errors %}
-        {{field.errors}}
+ 
         {% endif %}
       <div style="margin-bottom: 20px;" >
         <label class="block text-gray-700 text-sm font-bold mb-2" for="{{ field.id_for_label }}">
@@ -22,9 +24,9 @@
         {% endif %}
       </div>
     {% endfor %}
-    <button type="submit"  class="bg-green-400 p-[10px] w-[90px] h-[45px] rounded float-right text-white hover:opacity-50">Sign Up</button>
+    <button type="submit"  class="bg-blue-300 p-[10px] w-[90px] h-[45px] rounded float-right text-white hover:opacity-50">Sign Up</button>
   </form>
-  <p>Have already account? <a class="text-blue-300 underline" href="{% url 'login' %}">Login</a></p>
+  <p>Have already account? <a class="text-yellow-600 underline" href="{% url 'accounts:login' %}">Login</a></p>
 
 </div>
 </div>
