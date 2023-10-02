@@ -1,12 +1,12 @@
 {% load static %}
-{% if not user.is_authenticated %}
+
 
  <div class="relative group  flex flex-col justify-center items-center  px-[10px]  border border-transparent hover:border-white h-full">
     <div id="#openModal">
-    <small class="text-[12px] text-gray-400">Hello, sign in</small>
+    <small class="text-[12px] text-gray-400 text-center items-center">Hello, sign in</small>
     <p>Accounts & Lists</p>
     </div>
     {% include 'navbar/loginModal.html' %}
 
  </div>
-{% endif %}
+
