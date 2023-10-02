@@ -1,11 +1,16 @@
 {% extends 'base.html' %}
 
 {% block content %}
+{% include 'navbar/navbar.html' %}
+{% include 'navbar/menuNavbar.html' %}
 <div class="flex justify-center items-center w-full h-[100vh] ">
   <div class ="flex flex-col w-[500px]  shadow-2xl p-[30px] rounded ">
   <h2 class="text-[30px] mb-[20px] text-center">Login</h2>
   <form method="post" class="" >
     {% csrf_token %}
+    {% if error %}
+    <p class=" p-[10px] bg-red-300 text-white text-center mb-[10px] rounded">{{error}}  </p>
+    {% endif %}
     {% for field in form %}
       <div style="margin-bottom: 20px;" >
         <label class="block text-gray-700 text-sm font-bold mb-2" for="{{ field.id_for_label }}">
@@ -18,10 +23,13 @@
         {% endif %}
       </div>
     {% endfor %}
-    <button type="submit"  class="bg-green-400 p-[10px] w-[90px] h-[45px] rounded float-right text-white">Login</button>
+    <button type="submit"  class="bg-yellow-600 p-[10px] w-[90px] h-[45px] rounded float-right text-white hover:opacity-50">Login</button>
 
   </form>
-  <p>Don't have an account? <a class="text-blue-300 underline" href="{% url 'signup' %}">Sign up</a></p>
+  <p>Forgot Password?
+    <a class="text-blue-300" href="{% url 'accounts:passwordforgot' %}">Reset </a>now.
+</p>
+  <p>Don't have an account? <a class="text-blue-300 underline" href="{% url 'accounts:signup' %}">Sign up</a></p>
 </div>
 </div>
 
