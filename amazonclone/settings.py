@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'shop',
     'accounts',
+   
 
 
 
@@ -57,6 +58,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
 ]
 
 ROOT_URLCONF = 'amazonclone.urls'
@@ -151,9 +153,10 @@ NPM_BIN_PATH="/usr/local/bin/npm"
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-DEBUG = config('DEBUG', default=False, cast=bool)
+DEBUG = True
+EMAIL_BACKEND=config('EMAIL_BACKEND')
 EMAIL_HOST = config('EMAIL_HOST')
-EMAIL_USE_TLS = config('EMAIL_USE_TLS')
+EMAIL_USE_TLS =config('EMAIL_USE_TLS')
 EMAIL_PORT = config('EMAIL_PORT')
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
