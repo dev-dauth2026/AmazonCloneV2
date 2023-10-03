@@ -1,7 +1,13 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h2>Logged Out</h2>
-  <p>You have been successfully logged out.</p>
-  <a href="{% url 'login' %}">Login Again</a>
+{% include 'navbar/navbar.html' %}
+{% include 'navbar/menuNavbar.html' %}
+<div class="flex w-full h-[100vh] justify-center items-center ">
+  <div class="flex flex-col justify-center items-center p-5 shadow-2xl gap-[20px] w-[500px]">
+    <h2 class="text-center text-[30px] fond-bold">Logged Out</h2>
+    <p>You have been successfully logged out.</p>
+    <a href="{% url 'accounts:login' %}" class="bg-yellow-600 hover:bg-yellow-500 p-[5px]  w-[120px] text-center text-white rounded float-right">Login Again</a>
+  </div>
+</div>
 {% endblock %}
