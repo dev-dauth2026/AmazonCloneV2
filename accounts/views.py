@@ -30,7 +30,8 @@ class SignUpView(generic.CreateView):
             login(self.request,user)
             return super().form_valid(form)
         else:
-            print('Form Error please check') 
+
+            return self.render_to_response(self.get_context_data(form=form))
     
     def get_success_url(self):
         if "next" in self.request.GET:
@@ -51,18 +52,21 @@ class LoginView(generic.FormView):
     success_url= reverse_lazy('shop:home')
 
     def form_valid(self, form):
-        uname= form.cleaned_data.get("username")
-        pword= form.cleaned_data['password'] 
-        usr= authenticate(username=uname, password=pword) 
+        if form.is_valid():
+            uname= form.cleaned_data.get("username")
+            pword= form.cleaned_data['password'] 
+            usr= authenticate(username=uname, password=pword) 
 
-        if usr is not None and Customer.objects.filter(user=usr).exists():
-            login(self.request,usr)
+            if usr is not None and Customer.objects.filter(user=usr).exists():
+                login(self.request,usr)
 
+            else:
+                return render(self.request, self.template_name,{'form':self.form_class, "error":"Invalid Credential"})
+
+
+            return super().form_valid(form)
         else:
-            return render(self.request, self.template_name,{'form':self.form_class, "error":"Invalid Credential"})
-
-
-        return super().form_valid(form)
+            return self.render_to_response(self.get_context_data(form=form)) 
     
     def get_success_url(self):
         if "next" in self.request.GET:
@@ -74,31 +78,36 @@ class LoginView(generic.FormView):
 
 
 class PasswordForgotView(generic.FormView):
-    template_name = "forgotpassword.html"
+    template_name = "accounts/forgotpassword.html"
     form_class = PasswordForgotForm
-    success_url = "/forgot-password/?m=s"
+    success_url = "/accounts/passwordforgot/?m=s"
 
     def form_valid(self, form):
-        # get email from user
-        email = form.cleaned_data.get("email")
-        # get current host ip/domain
-        url = self.request.META['HTTP_HOST']
-        # get customer and then user
-        customer = Customer.objects.get(user__email=email)
-        user = customer.user
-        # send mail to the user with email
-        text_content = 'Please Click the link below to reset your password. '
-        html_content = url + "/password-reset/" + email +\
-            "/" + password_reset_token.make_token(user)+ "/"
-        send_mail(
-            'Password Reset Link | Amazon Clone',
-            text_content + html_content,
-            settings.EMAIL_HOST_USER,
-            [email],
-            fail_silently=False,
-        )
-        return super().form_valid(form)
+        if form.is_valid():
 
+            # get email from user
+            email = form.cleaned_data.get("email")
+            # get current host ip/domain
+            url = self.request.META['HTTP_HOST']
+            # get customer and then user
+            customer = Customer.objects.get(user__email=email)
+            user = customer.user
+            # send mail to the user with email
+            text_content = 'Please Click the link below to reset your password. '
+            html_content = url + "/accounts/password-reset/" + email +\
+                "/" + password_reset_token.make_token(user)+ "/"
+            send_mail(
+                'Password Reset Link | Amazon Clone',
+                text_content + html_content,
+                settings.EMAIL_HOST_USER,
+                [email],
+                fail_silently=False,
+            )
+            return super().form_valid(form)
+        
+        else:
+
+            return self.render_to_response(self.get_context_data(form=form))
     # def get_context_data(self,**kwargs):
     #     context= super().get_context_data(**kwargs)
     #     context['bcontact']=BusinessContact.objects.all().order_by("id")
@@ -109,9 +118,9 @@ class PasswordForgotView(generic.FormView):
 
 
 class PasswordResetView(generic.FormView):
-    template_name = "passwordreset.html"
+    template_name = "accounts/passwordreset.html"
     form_class = PasswordResetForm
-    success_url = "/login/"
+    success_url = reverse_lazy('accounts:login')
 
     def dispatch(self, request, *args, **kwargs):
         email = self.kwargs.get("email")
@@ -120,17 +129,27 @@ class PasswordResetView(generic.FormView):
         if user is not None and password_reset_token.check_token(user, token):
             pass
         else:
-            return redirect(reverse("fresh:passworforgot") + "?m=e")
+            return redirect(reverse("accounts:passworforgot") + "?m=e")
 
         return super().dispatch(request, *args, **kwargs)
 
     def form_valid(self, form):
-        password = form.cleaned_data['new_password']
-        email = self.kwargs.get("email")
-        user = User.objects.get(email=email)
-        user.set_password(password)
-        user.save()
-        return super().form_valid(form)
+        
+        if form.is_valid():
+            password = form.cleaned_data['new_password']
+            email = self.kwargs.get("email")
+            user = User.objects.get(email=email)
+            user.set_password(password)
+            user.save()
+            return super().form_valid(form)
+        else:
+            # Form is not valid, handle the error
+            error_message = form.errors.get('__all__')
+            if error_message:
+                # Display the error message in your template
+                # You can pass it in the context when rendering the template
+                context = {'error_message': error_message}
+            return  redirect(reverse("accounts/passwordreset"))
 
     # def get_context_data(self,**kwargs):
     #     context= super().get_context_data(**kwargs)
