@@ -9,9 +9,16 @@
   <form method="post" class="" >
     {% csrf_token %}
     {% if error %}
-    <p class=" p-[10px] bg-red-300 text-white text-center mb-[10px] rounded">{{error}}  </p>
+    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-[5px] rounded relative mb-[10px]" role="alert">
+      <p>{{error}}</p>
+  </div>
     {% endif %}
     {% for field in form %}
+    {% if field.errors %}
+    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-[5px] rounded relative mb-[10px]" role="alert">
+      <p>{{field.errors}}</p>
+  </div>
+    {% endif %}
       <div style="margin-bottom: 20px;" >
         <label class="block text-gray-700 text-sm font-bold mb-2" for="{{ field.id_for_label }}">
           {{ field.label_tag }}
