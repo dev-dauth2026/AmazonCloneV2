@@ -42,9 +42,10 @@ class SignUpView(generic.CreateView):
         
 
 class LogoutView(generic.View):
-    def get(self,request):
+
+    def get(self, request):
         logout(request)
-        return redirect('shop:home')
+        return render(request,template_name='accounts/logout.html')
     
 class LoginView(generic.FormView):
     template_name="accounts/login.html"
@@ -144,12 +145,7 @@ class PasswordResetView(generic.FormView):
             return super().form_valid(form)
         else:
             # Form is not valid, handle the error
-            error_message = form.errors.get('__all__')
-            if error_message:
-                # Display the error message in your template
-                # You can pass it in the context when rendering the template
-                context = {'error_message': error_message}
-            return  redirect(reverse("accounts/passwordreset"))
+            return self.render_to_response(self.get_context_data(form=form))
 
     # def get_context_data(self,**kwargs):
     #     context= super().get_context_data(**kwargs)
