@@ -3,11 +3,12 @@
 {% block content %}
 {% include 'navbar/navbar.html' %}
 {% include 'navbar/menuNavbar.html' %}
-<div class="flex w-full h-[100vh] justify-center items-center ">
-  <div class="flex flex-col justify-center items-center p-5 shadow-2xl gap-[20px] w-[500px]">
+<div class="flex w-full  justify-center items-center ">
+  <div class="flex flex-col justify-center items-center p-5 shadow-2xl gap-[20px] w-[500px] mt-[20px] rounded border-t-[3px] border-yellow-600">
     <h2 class="text-center text-[30px] fond-bold">Logged Out</h2>
+    <hr class="bg-gray-600">
     <p>You have been successfully logged out.</p>
-    <a href="{% url 'accounts:login' %}" class="bg-yellow-600 hover:bg-yellow-500 p-[5px]  w-[120px] text-center text-white rounded float-right">Login Again</a>
+    <a href="{% url 'accounts:login' %}" class="bg-yellow-600 hover:bg-yellow-500 p-[5px]  w-[120px] text-center text-white rounded transition-all duration-[1s]">Login Again</a>
   </div>
 </div>
 {% endblock %}
