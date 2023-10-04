@@ -1,5 +1,12 @@
 <nav class="menuNavbar flex justify-between bg-gray-800 text-white py-[10px] px-[20px] overflow-x-scroll">
 <ul class="flex  list-none gap-[5px] ">
+    {% if user.is_authenticated and not user.is_admin %}
+    <li  class="group  relative  flex flex-col justify-center items-center   border border-transparent hover:border-white h-full px-[10px]">
+
+        <i class="fa-solid fa-bars"></i>
+        {% include 'navbar/profileModal.html' %}
+    </li>
+    {% endif %}
     <li class="mr-[8px]">All</li>
     <li class="mr-[8px]">Sell</li>
     <li class="mr-[8px]">Best Sellars</li>
