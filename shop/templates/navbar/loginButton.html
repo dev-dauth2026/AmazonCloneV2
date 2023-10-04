@@ -3,8 +3,10 @@
 
  <div class="relative group  flex flex-col justify-center items-center  px-[10px]  border border-transparent hover:border-white h-full">
     <div id="#openModal">
-    <small class="text-[12px] text-gray-400 text-center items-center">Hello, sign in</small>
-    <p>Accounts & Lists</p>
+    <small class="text-[12px] text-gray-400 text-center items-center">Hello, {% if user.is_authenticated and not user.is_admin %}{{user.username}} {% else %} sign in{% endif %}</small>
+    <p>Accounts & Lists  <i class=" fa-solid fa-caret-down  text-gray-300 "></i></p>
+   
+
     </div>
     {% include 'navbar/loginModal.html' %}
 
