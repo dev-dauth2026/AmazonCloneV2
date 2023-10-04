@@ -1,8 +1,54 @@
 <!-- Modal Container -->
-<div id="myModal" class=" absolute bg-white  shadow-2xl flex flex-col justify-center items-center p-5  z-50 text-white text-xs rounded  top-[70px] opacity-0 group-hover:opacity-100 transition-opacity   h-[200px] w-[300px] ">
+<div id="myModal" class=" absolute  bg-white  shadow-2xl flex flex-col justify-center items-center  z-50 text-white text-xs rounded  top-[50px] -right-[100%] opacity-0 group-hover:opacity-100  transition-opacity duration-[1s]   min:h-[200px] min:w-[500px] ">
     <!-- Modal content -->
-    <a href="{% url 'accounts:login' %}" class="bg-yellow-600 p-[5px] w-[90%] h-[40px]  text-center rounded mb-[20px]">
-    Login 
-    </a>
-    <small class='text-black '>New Customer? <a href="{% url 'accounts:signup' %}" class="underline">Sign up </a></small>
+    <div class="relative p-5  rounded">
+        <i class="absolute fa-solid fa-caret-up z-50 -top-[10px] right-[50%]  text-white text-[20px]"></i>
+        {% if not user.is_authenticated and not user.is_admin %}
+        <div class="flex flex-col gap-[5px] w-full justify-center items-center border-b border-gray-300 pb-[5px]">
+            <a type="button" href="{% url 'accounts:login' %}" class="bg-yellow-600 hover:opacity-50 p-[5px] md:w-[50%] w-[90%] h-[40px] flex justify-center  items-center rounded text-[16px]">
+            <p>Login </p>
+            </a>
+            <small class='text-black '>New Customer? <a href="{% url 'accounts:signup' %}" class="underline hover:text-yellow-600">Sign up </a></small>
+        </div> 
+        
+            {% endif %}
+        <div class="flex  p-[20px] text-black gap-[20px] ">
+            <div class="list w-[200px] flex flex-col gap-[10px]">
+                <h2 class="text-[20px]">Your List</h2>
+                <ul class="flex flex-col gap-[7px]">
+                    <li><a class="hover:text-yellow-500 hover:underline" href="#" >Create your list</a></li>
+                    <li><a class="hover:text-yellow-500 hover:underline" href="#" >Baby WishList</a></li>
+                </ul>       
+            </div>
+
+            <div class="flex flex-col gap-[10px] accounts w-[200px] border-l border-gray-300 pl-[20px]">
+                <h2 class="text-[20px]">Your Accounts</h2>
+                <ul class="flex flex-col gap-[7px]">
+                    <li><a class="hover:text-yellow-500 hover:underline" href="{% url 'accounts:profile-account' %}" >Your Account</a></li>
+                    <li><a class="hover:text-yellow-500 hover:underline" href="#" >Your Orders</a></li>
+                    <li><a class="hover:text-yellow-500 hover:underline" href="#" >Keep shopping for</a></li>
+                    <li><a class="hover:text-yellow-500 hover:underline" href="#" >Your Recommendations</a></li>
+                    <li><a class="hover:text-yellow-500 hover:underline" href="#" >Your Prime Membership</a></li>
+                    <li><a class="hover:text-yellow-500 hover:underline" href="#" >Your Memberships and Subscriptions</a></li>
+                    <li><a class="hover:text-yellow-500 hover:underline" href="#" >Your Subscribe and Save Items</a></li>
+                    <li><a class="hover:text-yellow-500 hover:underline" href="#" >Your Seller Account</a></li>
+                    <li><a class="hover:text-yellow-500 hover:underline" href="#" >Your Pets</a></li>
+                    <li><a class="hover:text-yellow-500 hover:underline" href="#" >Manage Your Content and Devices</a></li>
+                    <li><a class="hover:text-yellow-500 hover:underline" href="#" >Your Music</a></li>
+                    <li><a class="hover:text-yellow-500 hover:underline" href="#" >Your App & Devices</a></li>
+                    <li><a class="hover:text-yellow-500 hover:underline" href="#" >Your Prime Video</a></li>
+                    <li><a class="hover:text-yellow-500 hover:underline" href="#" >Your Amazon Drive</a></li>
+                    <li><a class="hover:text-yellow-500 hover:underline" href="#" >Your Kindle Unlimited</a></li>
+                    {% if user.is_authenticated and not user.is_admin %}
+                    <hr>
+                    <li><a class="hover:text-yellow-500 hover:underline" href="#" >Switch Accounts</a></li>
+                    <li><a class="hover:text-yellow-500 hover:underline" href="{% url 'accounts:logout' %}" >Sign Out</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+   
+  
 </div>
