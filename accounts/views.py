@@ -153,3 +153,10 @@ class PasswordResetView(generic.FormView):
     #     context['btime']=BusinessTime.objects.all().order_by("id")
 
     #     return context
+
+
+class ProfileAccountView(generic.TemplateView):
+    def get(self,request):
+        return render(request,template_name='accounts/profile-account.html')
+        
+        
