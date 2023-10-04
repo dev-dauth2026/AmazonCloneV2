@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% include 'navbar/navbar.html' %}
+{% include 'navbar/menuNavbar.html' %}
+<div class="flex w-full  justify-center items-center ">
+  <div class="flex flex-col justify-center items-center md:w-[80%] w-[90%] p-5  gap-[20px] mt-[20px] rounded  ">
+    <h2 class="text-center text-[30px] fond-bold">Your Account</h2>
+    <div class=" p-[10px] flex justify-evenly flex-wrap gap-[20px]">
+        <div class="flex items-center rounded p-[10px] w-[300px] gap-5 border border-gray-300 hover:bg-gray-100">
+            <div class="flex justify-center items-center rounded-full bg-gray-300 p-[20px]">
+            <i class="fa-solid fa-boxes-packing "></i>
+            </div>
+            <div class="flex flex-col">
+                <h2 class="text-[18px]">Your Orders</h2>
+                <p class="text-[14px]">Track,return, cancel and order, download invoice or buy again
+            </div>
+        </div>
+        <div class="flex items-center rounded p-[10px] w-[300px] gap-5 border border-gray-300 hover:bg-gray-100">
+            <div class="flex justify-center items-center rounded-full bg-gray-300 p-[20px]">
+                <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <div class="flex flex-col">
+                <h2 class="text-[18px]">Login & Security</h2>
+                <p class="text-[14px]">Edit login, name and mobile number
+            </div>
+        </div>
+        <div class="flex items-center rounded p-[10px] w-[300px] gap-5 border border-gray-300 hover:bg-gray-100">
+            <div class="flex justify-center items-center rounded-full bg-gray-300 p-[20px]">
+                <i class="fa-brands fa-amazon"></i>
+            </div>
+            <div class="flex flex-col">
+                <h2 class="text-[18px]">Prime</h2>
+                <p class="text-[14px]">Manage Membership, view benefits and payments settings
+            </div>
+        </div>
+        <div class="flex items-center rounded p-[10px] w-[300px] gap-5 border border-gray-300 hover:bg-gray-100">
+            <div class="flex justify-center items-center rounded-full bg-gray-300 p-[20px]">
+                <i class="fa-solid fa-house-user"></i>
+            </div>
+            <div class="flex flex-col">
+                <h2 class="text-[18px]">Your Addresses</h2>
+                <p class="text-[14px]">Edit, remove or set default address</p>
+            </div>
+        </div>
+        <div class="flex items-center rounded p-[10px] w-[300px] gap-5 border border-gray-300 hover:bg-gray-100">
+            <div class="flex justify-center items-center rounded-full bg-gray-300 p-[20px]">
+                <i class="fa-solid fa-credit-card"></i>
+
+            </div>
+            <div class="flex flex-col">
+                <h2 class="text-[18px]">Payment</h2>
+                <p class="text-[14px]">Manage, add payment method and view transactions</p>
+            </div>
+        </div>
+        <div class="flex items-center rounded p-[10px] w-[300px] gap-5 border border-gray-300 hover:bg-gray-100">
+            <div class="flex justify-center items-center rounded-full bg-gray-300 p-[20px]">
+                <i class="fa-solid fa-gifts"></i>
+
+            </div>
+            <div class="flex flex-col">
+                <h2 class="text-[18px]">Gift Cards</h2>
+                <p class="text-[14px]">View balance or redeem a card, and purchase a new Gift Card</p>
+            </div>
+        </div>
+        <div class="flex items-center rounded p-[10px] w-[300px] gap-5 border border-gray-300 hover:bg-gray-100">
+            <div class="flex justify-center items-center rounded-full bg-gray-300 p-[20px]">
+                <i class="fa-solid fa-headset"></i>
+
+            </div>
+            <div class="flex flex-col">
+                <h2 class="text-[18px]">Customer Services</h2>
+                <p class="text-[14px]">Browse self service options, help articles or contact us</p>
+            </div>
+        </div>
+        <div class="flex items-center rounded p-[10px] w-[300px] gap-5 border border-gray-300 hover:bg-gray-100">
+            <div class="flex justify-center items-center rounded-full bg-gray-300 p-[20px]">
+                <i class="fa-solid fa-mobile-screen-button"></i>
+
+            </div>
+            <div class="flex flex-col">
+                <h2 class="text-[18px]">Amazon Mobile Apps</h2>
+                <p class="text-[14px]">Download amazon app</p>
+            </div>
+        </div>
+        <div class="flex items-center rounded p-[10px] w-[300px] gap-5 border border-gray-300 hover:bg-gray-100">
+            <div class="flex justify-center items-center rounded-full bg-gray-300 p-[20px]">
+                <i class="fa-regular fa-envelope-open"></i>
+
+            </div>
+            <div class="flex flex-col">
+                <h2 class="text-[18px]">Your Messages</h2>
+                <p class="text-[14px]">View or respond to messages from Amazon, Sellers and Buyers</p>
+            </div>
+        </div>
+        <div class="flex items-center rounded p-[10px] w-[300px] gap-5 border border-gray-300 hover:bg-gray-100">
+            <div class="flex justify-center items-center rounded-full bg-gray-300 p-[20px]">
+                <i class="fa-solid fa-suitcase-medical"></i>
+
+            </div>
+            <div class="flex flex-col">
+                <h2 class="text-[18px]">Digital Services and Device Support</h2>
+                <p class="text-[14px]">Troubleshoot device issues, manage or cancel digital subscriptions</p>
+            </div>
+        </div>
+     
+        
+      
+    </div>
+  </div>
+</div>
+{% endblock %}
