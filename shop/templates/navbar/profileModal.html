@@ -1,5 +1,5 @@
 <!-- Modal Container -->
-<div id="myModal" class=" fixed bg-white  shadow-2xl flex flex-col py-[10px]   z-50   s rounded  top-[70px] right-0   w-[300px] transition ease-in duration-800 group-hover:translate-x-0 translate-x-full ">
+<div id="myModal" class=" fixed bg-white  shadow-2xl flex flex-col py-[10px]   z-50   s rounded  top-[70px] left-0   w-[300px] transition ease-in duration-800 group-hover:translate-x-0 -translate-x-full ">
     <!-- Modal content -->
     <i class="fa-solid fa-user-circle fa-3x text-black text-center"></i>
     {% if user.is_authenticated %}
@@ -7,7 +7,7 @@
     {% endif %}
     <hr class="my-[10px]">
     <ul class="w-full flex flex-col text-black">
-        <li class="py-[10px] px-[20px] hover:bg-blue-300 hover:text-white">My Account</li>
+        <li class="py-[10px] px-[20px] hover:bg-blue-300 hover:text-white"><a href="{% url 'accounts:profile-account' %}"> My Account</a></li>
         <li class="py-[10px] px-[20px] hover:bg-blue-300 hover:text-white">Purchases</li>
         <li class="py-[10px] px-[20px] hover:bg-blue-300 hover:text-white">Saved</li>
         <li class="py-[10px] px-[20px] hover:bg-blue-300 hover:text-white">History </li>
